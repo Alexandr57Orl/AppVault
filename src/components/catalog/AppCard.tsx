@@ -36,13 +36,16 @@ export default function AppCard({ app, isSaved, onSelect, onToggle }: Props) {
       <p className="description">{app.description}</p>
       <div className="card-meta">
         <span className="category-label">{app.category}</span>
-        <span className="card-rating" aria-label={`Оценка ${app.rating} из 5`}>
+        <span
+          className="card-rating"
+          aria-label={app.rating === '—' ? 'Нет оценки' : `Оценка ${app.rating} из 5`}
+        >
           <Star size={15} fill="currentColor" /> {app.rating}
         </span>
       </div>
       <div className="card-bottom">
         <span>
-          v{app.version}
+          {app.version === '—' ? 'Версия не указана' : `v${app.version}`}
           <i>·</i>
           {app.size}
         </span>

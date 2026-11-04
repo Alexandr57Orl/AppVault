@@ -14,8 +14,8 @@ export function useCatalog(apps: AppEntry[]) {
     )
     .sort((a, b) => {
       if (sort === 'name') return a.name.localeCompare(b.name);
-      if (sort === 'recent') return Number(b.year) - Number(a.year);
-      return Number(b.rating) - Number(a.rating);
+      if (sort === 'recent') return (Number(b.year) || 0) - (Number(a.year) || 0);
+      return (Number(b.rating) || 0) - (Number(a.rating) || 0);
     });
   function resetFilters() {
     setCategory('Все приложения');

@@ -616,6 +616,465 @@ a,
     gap: 8px;
   }
 }
+/* Readable type at every breakpoint, including the compact legacy layouts. */
+:root {
+  line-height: 1.6;
+}
+.nav-item,
+.sidebar .nav-item {
+  font-size: 15px;
+  padding: 14px 12px;
+}
+.nav-caption,
+.sidebar .nav-caption,
+.sidebar-note > span,
+.sidebar-bottom {
+  font-size: 12px;
+}
+.sidebar-note p {
+  font-size: 14px;
+}
+.breadcrumb,
+.demo-label,
+.eyebrow,
+.archive-badge {
+  font-size: 13px;
+}
+.page-heading h1 {
+  font-size: clamp(32px, 3.5vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -1.4px;
+}
+.page-heading p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.hero {
+  height: auto;
+  min-height: 440px;
+  isolation: isolate;
+}
+.hero-copy {
+  width: 60%;
+  padding: 36px;
+}
+.hero h2 {
+  font-size: clamp(30px, 3.1vw, 48px);
+  line-height: 1.14;
+  letter-spacing: -1.6px;
+}
+.hero p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+.hero-tag,
+.hero-foot,
+.art-label {
+  font-size: 12px;
+}
+.dark-button {
+  font-size: 15px;
+  padding: 14px 20px;
+  min-height: 48px;
+}
+.section-title h2 {
+  font-size: 23px;
+  line-height: 1.35;
+}
+.section-title > span,
+.catalog-bottom,
+.catalog-bottom > span:last-child {
+  font-size: 13px;
+}
+.local-data {
+  font-size: 12px !important;
+}
+.search {
+  min-width: 0;
+  min-height: 48px;
+}
+.search input,
+.sort,
+.sort select {
+  font-size: 14px;
+}
+.sort {
+  height: 48px;
+}
+.sort select {
+  width: auto;
+  max-width: 150px;
+}
+.categories button {
+  font-size: 14px;
+  padding: 10px 14px;
+}
+.app-card .app-name {
+  font-size: 24px;
+}
+.app-card .developer {
+  font-size: 14px;
+}
+.app-card .description {
+  font-size: 16px;
+  min-height: 5.1em;
+}
+.app-card .category-label,
+.app-card .card-bottom {
+  font-size: 13px;
+}
+.app-card .card-bottom button {
+  font-size: 14px;
+}
+.featured-card .feature-caption {
+  font-size: 12px;
+}
+.featured-card h3 {
+  font-size: 21px;
+}
+.featured-card p {
+  font-size: 14px;
+}
+.info-strip strong {
+  font-size: 16px;
+}
+.info-strip p,
+.info-strip button,
+footer,
+footer strong {
+  font-size: 13px;
+}
+.subscription-heading h1 {
+  font-size: clamp(34px, 4.5vw, 60px);
+}
+.subscription-heading p {
+  font-size: 18px;
+}
+.pill {
+  font-size: 12px;
+}
+.plan-card h2 {
+  font-size: 24px;
+}
+.plan-card p,
+.plan-period,
+.plan-card li,
+.subscription-demo,
+.subscription-faq,
+.subscription-next p {
+  font-size: 15px;
+}
+.plan-card p {
+  min-height: 3.6em;
+}
+.plan-price {
+  font-size: clamp(34px, 3vw, 44px);
+}
+.plan-ribbon {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.subscription-next h2 {
+  font-size: 21px;
+}
+.subscription-status {
+  font-size: 14px;
+}
+.checkout-heading p,
+.checkout-success p {
+  font-size: 17px;
+}
+.checkout-fields label,
+.checkout-consent,
+.checkout-demo,
+.checkout-summary p,
+.checkout-summary li,
+.checkout-total,
+.checkout-saving {
+  font-size: 15px;
+}
+.checkout-fields input {
+  font-size: 16px;
+}
+.checkout-fields small,
+.checkout-summary small {
+  font-size: 13px;
+}
+.modal {
+  width: 560px;
+}
+.modal h2 {
+  font-size: 34px;
+}
+.modal p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.modal-notice,
+.detail-grid strong {
+  font-size: 14px;
+}
+.detail-grid span {
+  font-size: 12px;
+}
+
+/* Entrance and interaction motion use transforms to avoid moving the layout. */
+.hero {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-copy > * {
+  animation: reveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-copy > :nth-child(2) {
+  animation-delay: 0.1s;
+}
+.hero-copy > :nth-child(3) {
+  animation-delay: 0.18s;
+}
+.hero-copy > :nth-child(4) {
+  animation-delay: 0.26s;
+}
+.hero-copy > :nth-child(5) {
+  animation-delay: 0.34s;
+}
+.featured-card,
+.checkout-form,
+.checkout-summary,
+.checkout-success {
+  animation: reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.featured-card:nth-child(2),
+.checkout-summary {
+  animation-delay: 0.12s;
+}
+.featured-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.app-card,
+.plan-card {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.app-card:nth-child(6n + 4) {
+  animation-delay: 0.18s;
+}
+.app-card:nth-child(6n + 5) {
+  animation-delay: 0.24s;
+}
+.app-card:nth-child(6n) {
+  animation-delay: 0.3s;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: 10%;
+  top: -160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #b683ff45, transparent 70%);
+  pointer-events: none;
+  animation: aurora-drift 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+.orbit {
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  animation: orbit-turn 35s linear infinite;
+}
+.orbit-two {
+  animation-duration: 48s;
+  animation-direction: reverse;
+}
+.orbit::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 50%;
+  top: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent);
+}
+.spark {
+  color: var(--accent);
+  animation: sparkle 4s ease-in-out infinite;
+}
+.spark-two {
+  animation-delay: -2s;
+}
+.float-weather {
+  animation-delay: -1s;
+}
+.float-game {
+  animation-delay: -4s;
+}
+.dark-button {
+  position: relative;
+  overflow: hidden;
+}
+.dark-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, #ffffff28 50%, transparent 75%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.dark-button svg,
+.featured-card > svg,
+.app-icon,
+.save-button svg {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dark-button:active:not(:disabled),
+.categories button:active {
+  transform: scale(0.97);
+}
+.save-button.saved svg {
+  animation: saved-pop 0.4s ease-out;
+}
+.modal-backdrop {
+  animation: backdrop-in 0.25s ease-out both;
+}
+.modal {
+  animation: modal-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.plan-card {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .featured-card:hover,
+  .plan-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px #7152df20;
+    border-color: var(--accent);
+  }
+  .app-card:hover .app-icon {
+    transform: rotate(-6deg) scale(1.08);
+  }
+  .featured-card:hover > svg,
+  .dark-button:hover:not(:disabled) svg {
+    transform: translateX(4px);
+  }
+  .dark-button:hover:not(:disabled)::after {
+    transform: translateX(130%);
+    transition: transform 0.7s ease;
+  }
+  .save-button:hover svg {
+    transform: scale(1.18);
+  }
+}
+@keyframes orbit-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(-28deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(332deg);
+  }
+}
+@keyframes aurora-drift {
+  to {
+    transform: translate(-100px, 150px) scale(1.25);
+  }
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    scale: 0.85;
+    opacity: 0.45;
+  }
+  50% {
+    scale: 1.2;
+    opacity: 1;
+    rotate: 25deg;
+  }
+}
+@keyframes saved-pop {
+  50% {
+    transform: scale(1.35) rotate(-12deg);
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (max-width: 1100px) {
+  .plans-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 26px;
+  }
+  .hero-copy {
+    width: 65%;
+    padding: 30px;
+  }
+}
+@media (max-width: 760px) {
+  .hero-copy {
+    width: 100%;
+    padding: 28px 24px;
+  }
+  .hero {
+    min-height: 0;
+  }
+  .hero h2 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .hero-art {
+    display: none;
+  }
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .catalog-title {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .catalog-bottom,
+  footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .plan-card p {
+    min-height: 0;
+  }
+}
+@media (max-width: 420px) {
+  .sort select {
+    max-width: 105px;
+    font-size: 13px;
+  }
+  .hero-foot {
+    flex-wrap: wrap;
+  }
+  .modal {
+    padding: 28px 20px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -624,4 +1083,61 @@ a,
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Brand artwork for the catalog hero. */
+.hero .brand-sberbank { background: linear-gradient(135deg, #8dcc39, #079c53); }
+.hero .brand-vtb { background: #003b71; }
+.float-bank-sber {
+  right: 12%;
+  top: 10%;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  transform: rotate(12deg);
+  z-index: 2;
+}
+.float-bank-vtb {
+  left: 43%;
+  bottom: 9%;
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  transform: rotate(-8deg);
+  z-index: 2;
+}
+.hero .brand-icon {
+  color: #fff;
+  overflow: hidden;
+}
+.hero .brand-vk { background: #0077ff; }
+.hero .brand-rutube { background: #101b35; }
+.hero .brand-max { background: linear-gradient(145deg, #32b9fa, #5261ee 55%, #963bdf); }
+.hero .brand-rustore { background: #0875ef; }
+.hero .brand-icon svg { display: block; width: 82%; height: 82%; }
+.hero-brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+}
+.hero-brands li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.hero-brands .brand-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+@media (max-width: 420px) {
+  .hero-brands { gap: 12px; }
 }

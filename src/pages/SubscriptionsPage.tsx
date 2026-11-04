@@ -1,6 +1,7 @@
 import { ArrowRight, Check, Crown, Download, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import type { Plan } from '../hooks/usePreferences';
+import CheckoutPage from './CheckoutPage';
 
 type Props = { plan: Plan; onChange: (plan: Plan) => void; onCatalog: () => void };
 const plans = [
@@ -32,6 +33,12 @@ const plans = [
 
 export default function SubscriptionsPage({ plan, onChange, onCatalog }: Props) {
   const [message, setMessage] = useState('');
+  const [checkoutPlan, setCheckoutPlan] = useState<Exclude<Plan, 'free'> | null>(null);
+  if (checkoutPlan) {
+    return (
+      <CheckoutPage plan={checkoutPlan} onBack={() => setCheckoutPlan(null)} onConfirm={onChange} />
+    );
+  }
   return (
     <section className="subscriptions">
       <div className="subscription-heading">
@@ -76,6 +83,11 @@ export default function SubscriptionsPage({ plan, onChange, onCatalog }: Props) 
               className="dark-button full-width"
               disabled={plan === item.id}
               onClick={() => {
+                if (item.id !== 'free') {
+                  setCheckoutPlan(item.id);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  return;
+                }
                 onChange(item.id);
                 setMessage(`Демо-тариф ${item.name} выбран. Оплата не производилась.`);
               }}
@@ -87,7 +99,7 @@ export default function SubscriptionsPage({ plan, onChange, onCatalog }: Props) 
                 </>
               ) : (
                 <>
-                  Попробовать в демо
+                  {item.id === 'free' ? 'Выбрать Explorer' : 'Оформить подписку'}
                   <ArrowRight size={16} />
                 </>
               )}
