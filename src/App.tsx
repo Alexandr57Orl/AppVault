@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 
 import ArchiveNotice from './components/layout/ArchiveNotice';
 import Footer from './components/layout/Footer';
@@ -7,6 +7,7 @@ import Sidebar from './components/layout/Sidebar';
 import AboutProject from './components/modals/AboutProject';
 import AppDetails from './components/modals/AppDetails';
 import Modal from './components/ui/Modal';
+import Auth, { type AuthUser } from './components/modals/Auth';
 import { apps } from './data/apps';
 import { useFavorites } from './hooks/useFavorites';
 import { usePreferences } from './hooks/usePreferences';
@@ -14,14 +15,19 @@ import SubscriptionsPage from './pages/SubscriptionsPage';
 import LibraryPage from './pages/LibraryPage';
 import type { AppEntry, Section } from './types/app';
 
-type ActiveModal = { type: 'app'; app: AppEntry } | { type: 'about' } | null;
+type ActiveModal = { type: 'app'; app: AppEntry } | { type: 'about' } | { type: 'auth' } | null;
 export default function App() {
   const { theme, toggleTheme, plan, setPlan } = usePreferences();
   const { saved, toggle } = useFavorites();
   const [section, setSection] = useState<Section>('Каталог');
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [mobile, setMobile] = useState(false);
   const [modal, setModal] = useState<ActiveModal>(null);
   const closeModal = useCallback(() => setModal(null), []);
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [section]);
+
   function navigate(nextSection: Section) {
     setSection(nextSection);
     setMobile(false);
@@ -33,6 +39,8 @@ export default function App() {
         section={section}
         mobile={mobile}
         savedCount={saved.length}
+        catalogCount={apps.length}
+        plan={plan}
         navigate={navigate}
         onClose={() => setMobile(false)}
         onAbout={() => setModal({ type: 'about' })}
@@ -46,7 +54,8 @@ export default function App() {
           theme={theme}
           onToggleTheme={toggleTheme}
           onMenu={() => setMobile(true)}
-          onAbout={() => setModal({ type: 'about' })}
+          user={user}
+          onAuth={() => setModal({ type: 'auth' })}
         />
         <main>
           {section === 'Подписки' ? (
@@ -72,7 +81,16 @@ export default function App() {
       </div>
       {modal && (
         <Modal onClose={closeModal}>
-          {modal.type === 'app' ? (
+          {modal.type === 'auth' ? (
+            <Auth
+              user={user}
+              onSignIn={setUser}
+              onSignOut={() => {
+                setUser(null);
+                closeModal();
+              }}
+            />
+          ) : modal.type === 'app' ? (
             <AppDetails
               app={modal.app}
               isSaved={saved.includes(modal.app.id)}
